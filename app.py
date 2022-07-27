@@ -4,7 +4,6 @@ import pandas as pd
 import joblib
 from predict import pred_disease
 
-@st.cache
 def load_data():
     desc_data = pd.read_csv('data_healthcare/symptom_Description.csv')
     prec_data = pd.read_csv('data_healthcare/symptom_precaution.csv')
