@@ -1,14 +1,14 @@
 import streamlit as st
-from keras.models import load_model 
+import tensorflow as tf 
 import pandas as pd
 import joblib
 from predict import pred_disease
 
-
+@st.cache
 def load_data():
     desc_data = pd.read_csv('data_healthcare/symptom_Description.csv')
     prec_data = pd.read_csv('data_healthcare/symptom_precaution.csv')
-    model = load_model('model/Classification_Disease.h5')
+    model = tf.keras.models.load_model('model/Classification_Disease.h5')
     enc = joblib.load('model/label_ohe.pkl')
     mlb = joblib.load('model/symps_ohe.pkl')
     symps_data = mlb.classes_.tolist()
